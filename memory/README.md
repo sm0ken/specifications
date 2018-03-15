@@ -16,6 +16,7 @@ The MMU will have to check if a certain page is allowed to be accessed by the pr
 
 ### Asynchronous memory access
 Since access to main memory or worse yet, mass storage can be a very slow ordeal, memory access is done in an asynchronous mode where a memory read will lock a register while the execution of the currently executing program or, in case there is no further execution possible, a different program that is ready will execute for some time, until the memory access reports a finished state and unlocks access to the register for the process that requested the memory access.
+The second mode to use the asynchronous unit is the "interrupt" functionality, which is a subset of asynchronous instructions which do not lock a register, but rather manipulate the instruction pointer once they are finisehd.
 
 ## ? Variable page sizes ?
 Should pages be able to have variable sizes and if so, how will addressing be handled efficiently? If not, what size would be reasonable to not have to switch pages excessively while also not allocating lots of unneeded memory to processes?

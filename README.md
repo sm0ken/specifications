@@ -2,7 +2,7 @@
 Specifications for the smøken-cpu.
 
 ## principles
-The architecture is designed to move certain aspects of concurrency away from the software space and introduce hardware level concurrency and a possibility to add instruction handlers to decrease the possible effects of bottlenecks.
+The architecture is designed to move certain aspects of concurrency away from the software space and introduce hardware level concurrency and a possibility to add instruction handlers / ALU components at specification time to decrease the possible effects of bottlenecks. To facilitate unified instruction speed inside the ALU, some functionality is moved to the asynchonous unit/MMU.
 
 ## intent
 This repository will contain the specifications for the smøken computer, which is aimed to be an educational microcomputer project that implements some unorthodox features in its architecture. These specifications are meant to be independent of the implementation's word size.
@@ -12,8 +12,9 @@ The contents of this repository will hopefully be used to implement a fully work
 
 ## instruction handling
 Every instruction handler has the following special registers:
-+ tid register, contains the (hardware)thread id
++ tid register, contains the (hardware)thread id (hardcoded for simplicity)
 + instruction pointer, contains adress (inside the processes current instruction page) to fetch the next instrucion from
++ statistics register, gets incremented every time the instruction handler is locked and decremented everytime the instruction handler is able to successfully carry out an instruction. Does not overflow / undeflow.
 + ? any more ?
 
 Instruction handling follows the following cycle
